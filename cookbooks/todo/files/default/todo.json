@@ -1,0 +1,4 @@
+[{ "action": "Research AWS Angular stack", "done": false },
+ { "action": "Research AWS Elastic Map Reduce for storing/analyzing data", "done": false },
+ { "action": "Create table of expenditures", "done": false },
+ { "action": "Develop sort functionality based on amount, date, merchant, etc", "done": false }]

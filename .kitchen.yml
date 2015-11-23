@@ -1,0 +1,32 @@
+---
+driver:
+  name: ec2
+  aws_ssh_key_id: "<%=ENV['SSH_KEY_ID']%>"
+  security_group_ids: ["<%=ENV['SSH_SG']%>","<%=ENV['WEB_SG']%>"]
+  region: us-west-2
+  require_chef_omnibus: true
+  subnet_id: "<%=ENV['SUBNET_ID']%>"
+  instance_type: t2.micro
+  tags:
+    Name: angular-web
+    created-by: "<%=ENV['USER']%>"
+
+transport:
+  ssh_key: "<%=ENV['SSH_KEY']%>"
+  connection_timeout: 10
+  connection_retries: 5
+  username: ec2-user
+
+provisioner:
+  name: chef_solo
+
+platforms:
+  - name: amazon_linux
+    driver:
+      image_id: "<%=ENV['AMI_ID']%>"
+
+suites:
+  - name: todo
+    run_list:
+      - role[todo]
+    attributes:
