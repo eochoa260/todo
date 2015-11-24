@@ -1,0 +1,6 @@
+var connect = require('connect');
+var serveStatic = require('serve-static');
+var app = connect();
+
+app.use(serveStatic('<%= node['NodeJs']['angularjs']['dir'] %>'));
+app.listen(<%= node['NodeJs']['HTTP']['Port'] %>);

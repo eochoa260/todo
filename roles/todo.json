@@ -1,6 +1,6 @@
 {
-    "name": "angular",
-    "description": "This role will provision an angular web server",
+    "name": "todo",
+    "description": "This role will provision a NodeJs web server with a ToDo list app",
     "chef_type": "role",
     "json_class": "Chef::Role",
     "default_attributes": {
@@ -8,7 +8,7 @@
     "override_attributes": {
     },
     "run_list": [
-        "recipe[angular]",
+        "recipe[NodeJs@0.2.0]",
         "recipe[todo]"
     ]
 }

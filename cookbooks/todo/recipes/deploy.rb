@@ -1,16 +1,18 @@
-cookbook_file '/opt/angular/angularjs/todo.json' do
+cookbook_file "#{node['NodeJs']['angularjs']['dir']}/todo.json" do
 	source 'todo.json'
 	mode '0775'
 end
 
-execute 'Move Bootstrap Dependencies' do
-	cwd '/opt/angular/node_modules/bootstrap/dist/css'
-	command 'cp bootstrap.css /opt/angular/angularjs/; cp bootstrap-theme.css /opt/angular/angularjs/'
-	not_if{Dir.exist?('/opt/angular/angularjs/bootstrap.css')}
+node['NodeJs']['bootstrap']['modules'].each do |modules|
+	execute "Move #{modules}" do
+		cwd "#{node['NodeJs']['module']['dir']}/bootstrap/dist/css"
+		command "cp #{modules} #{node['NodeJs']['angularjs']['dir']}"
+		not_if{File.exist?("#{node['NodeJs']['angularjs']['dir']}/#{modules}")}
+	end
 end
 
-template '/opt/angular/angularjs/todo.html' do
+template "#{node['NodeJs']['angularjs']['dir']}/todo.html" do
 	source 'todo.html.erb'
 	mode '0775'
-	notifies :run, 'execute[Start Angular Service]', :immediately
+	notifies :run, 'execute[Start NodeJs Service]', :immediately
 end

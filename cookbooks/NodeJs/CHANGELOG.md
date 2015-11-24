@@ -1,11 +1,15 @@
-angular CHANGELOG
+NodeJs CHANGELOG
 =========================
 
-This file is used to list changes made in each version of the angular cookbook.
+This file is used to list changes made in each version of the NodeJs cookbook.
+
+0.2.0
+-----
+- eochoa260 - Updated cookbook to use attributes.
 
 0.1.0
 -----
-- [your_name] - Initial release of angular
+- eochoa260 - Initial release of NodeJs
 
 - - -
 Check the [Markdown Syntax Guide](http://daringfireball.net/projects/markdown/syntax) for help with Markdown.
