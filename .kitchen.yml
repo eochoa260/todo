@@ -26,7 +26,11 @@ platforms:
       image_id: "<%=ENV['AMI_ID']%>"
 
 suites:
-  - name: todo
+  - name: todoG
+    run_list:
+      - role[todo]
+    attributes:
+  - name: todoB
     run_list:
       - role[todo]
     attributes:
